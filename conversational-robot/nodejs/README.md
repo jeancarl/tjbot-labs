@@ -86,7 +86,7 @@ This will instruct TJBot to start transcribing what is heard, calling the proces
     tj.listen(processText);    
     ```
 
-10. Next, we'll use the Watson Conversation service to analyze the text and respond, which requires service credentials from IBM Cloud. Return to the IBM Cloud dashboard catalog and create a **Watson Conversation** service.
+10. Next, we'll use the Watson Assistant (formerly Watson Conversation) service to analyze the text and respond, which requires service credentials from IBM Cloud. Return to the IBM Cloud dashboard catalog and create a **Watson Assistant (fomerly Conversation)** service.
 
     ![](assets/1.7.png)
 
@@ -94,7 +94,7 @@ This will instruct TJBot to start transcribing what is heard, calling the proces
 
     ![](assets/1.8.png)
 
-12. Click on the green button labeled **Launch Tool** to launch into the Conversation training tool.
+12. Click on the green button labeled **Launch Tool** to launch into the Watson Assistant training tool.
 
     ![](assets/1.9.png)
 
@@ -106,11 +106,11 @@ This will instruct TJBot to start transcribing what is heard, calling the proces
 
     ![](assets/1.11.png)    
 
-15. The workspace has been trained with Intents, Entities, and a Dialog of responses that provide a simple conversation that the user can ask TJBot. Explore the tabs and see how an example chatbot is designed in the Watson Conversation service.
+15. The workspace has been trained with Intents, Entities, and a Dialog of responses that provide a simple conversation that the user can ask TJBot. Explore the tabs and see how an example chatbot is designed in the Watson Assistant service.
 
     ![](assets/1.12.png)    
 
-    In order for TJBot to use the Watson Conversation service, we first need to get the service credentials and workspace ID. Click on the deploy button in the left sidebar.
+    In order for TJBot to use the Watson Assistant service, we first need to get the service credentials and workspace ID. Click on the deploy button in the left sidebar.
 
     ![](assets/1.13.png)    
 
@@ -136,7 +136,7 @@ This will instruct TJBot to start transcribing what is heard, calling the proces
 
     ![](assets/1.16.png)
 
-18. Replace the placeholder `/* Step #18 */` with the following code. This code will pass the text that was transcribed with the Watson Speech to Text service to the Watson Conversation service to understand and analyze.
+18. Replace the placeholder `/* Step #18 */` with the following code. This code will pass the text that was transcribed with the Watson Speech to Text service to the Watson Assistant service to understand and analyze.
 
     ```  
       tj.converse(workspaceId, text, response => {
@@ -236,7 +236,7 @@ This will instruct TJBot to start transcribing what is heard, calling the proces
         }
     ```
 
-25. Replace the placeholder `/* Step #25 */` with the following code. This code will combine the response from the Watson Conversation service and use the Watson Text to Speech service to speak out the response. When the text has been spoken out, TJBot will resume listening for another utterance, and repeat the cycle.
+25. Replace the placeholder `/* Step #25 */` with the following code. This code will combine the response from the Watson Assistant service and use the Watson Text to Speech service to speak out the response. When the text has been spoken out, TJBot will resume listening for another utterance, and repeat the cycle.
 
     ```
         tj.speak(response.object.output.text.join(" ")).then(() => {
@@ -244,7 +244,7 @@ This will instruct TJBot to start transcribing what is heard, calling the proces
         });
     ```
 
-26. Run the code. Speak a phrase. TJBot will transcribe the audio with the Watson Speech to Text service, analyze the utterance with the Watson Conversation service, and speak out the response using the Watson Text to Speech service.    
+26. Run the code. Speak a phrase. TJBot will transcribe the audio with the Watson Speech to Text service, analyze the utterance with the Watson Assistant service, and speak out the response using the Watson Text to Speech service.    
 
 
 ## Running on the Raspberry Pi
