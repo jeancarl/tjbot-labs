@@ -214,4 +214,4 @@ tj.see(objects => {
 
 ## IBM Coder Challenge
 
-When you complete this lab, visit the [IBM Coder challenge](https://ibm-coder-tjbot) to earn credit.
+When you complete this lab, visit the [IBM Coder challenge](https://ibm.biz/ibm-coder-tjbot) to earn credit.
