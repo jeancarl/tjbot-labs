@@ -10,6 +10,10 @@ You can run this lab on a physical TJBot or use the [TJBot simulator](https://ib
 
 If you run this lab on a physical TJBot, you will need to connect a microphone and speaker to the TJBot for this lab. There is also an extra step to configure the speaker in the section titled **Running on the Raspberry Pi** at the end of this lab.
 
+## IBM Cloud Account
+
+You will need a IBM Cloud account to create the IBM Watson services used in this lab. Please visit [ibm.biz/start-tjbot-lab](https://ibm.biz/start-tjbot-lab) to register for and log into your IBM Cloud.
+
 ## Train TJBot to Listen, Converse, and Speak
 
 1. Create a file named `app.js`. Copy the following code. In the following steps, replace the `/* Step # */` placeholders with the code provided.
@@ -86,7 +90,7 @@ This will instruct TJBot to start transcribing what is heard, calling the proces
     tj.listen(processText);    
     ```
 
-10. Next, we'll use the Watson Assistant (formerly Watson Conversation) service to analyze the text and respond, which requires service credentials from IBM Cloud. Return to the IBM Cloud dashboard catalog and create a **Watson Assistant (fomerly Conversation)** service.
+10. Next, we'll use the Watson Assistant (formerly Watson Conversation) service to analyze the text and respond, which requires service credentials from IBM Cloud. Return to the IBM Cloud dashboard catalog and create a **Watson Assistant (formerly Conversation)** service.
 
     ![](assets/1.7.png)
 
@@ -312,3 +316,7 @@ function processText(text) {
 
 tj.listen(processText);
 ```
+
+## IBM Coder Challenge
+
+When you complete this lab, visit the [IBM Coder challenge](https://ibm-coder-tjbot) to earn credit.

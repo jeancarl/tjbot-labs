@@ -8,6 +8,10 @@ In this lab, we will use the see and speak capabilities to train TJBot to recogn
 
 If you run this lab on a physical TJBot, you will need to connect a Raspberry Pi camera and speaker to the TJBot for this lab. There is also an extra step to configure the speaker in the section titled **Running on the Raspberry Pi** at the end of this lab.
 
+## IBM Cloud Account
+
+You will need a IBM Cloud account to create the IBM Watson services used in this lab. Please visit [ibm.biz/start-tjbot-lab](https://ibm.biz/start-tjbot-lab) to register for and log into your IBM Cloud.
+
 ## Train TJBot to See Objects and Speak
 
 1. Create a file named `app.js`. Copy the following code. In the following steps, we'll replace the /* Step # */ placeholders with code. 
@@ -207,3 +211,7 @@ tj.see(objects => {
   tj.speak(text);
 });
 ```
+
+## IBM Coder Challenge
+
+When you complete this lab, visit the [IBM Coder challenge](https://ibm-coder-tjbot) to earn credit.

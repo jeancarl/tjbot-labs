@@ -10,6 +10,10 @@ You can run this lab on a physical TJBot or use the [TJBot simulator](https://ib
 
 If you run this lab on a physical TJBot, you will need to connect a microphone and LED to the TJBot for this lab. 
 
+## IBM Cloud Account
+
+You will need a IBM Cloud account to create the IBM Watson services used in this lab. Please visit [ibm.biz/start-tjbot-lab](https://ibm.biz/start-tjbot-lab) to register for and log into your IBM Cloud.
+
 ## Train TJBot to Listen and React to Emotions
 
 1. Create a file named `app.js`. Copy the following code. In the following steps, replace the `/* Step # */` placeholders with the code provided. 
@@ -192,6 +196,10 @@ function processText(text) {
 
 tj.listen(processText);
 ```
+
+## IBM Coder Challenge
+
+When you complete this lab, visit the [IBM Coder challenge](https://ibm-coder-tjbot) to earn credit.
 
 ## Notes
 
