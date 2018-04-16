@@ -1,22 +1,22 @@
-# Conversational Robot
+# Lab 3: Create a conversational robot
 
 ![](assets/tjbot.png)
 
 ## Requirements
 
-In this lab, we'll use the listen, converse, and speak methods to train TJBot to listen to utterances, understand the natural language intents and entities, and respond by speaking out the response.
+In this lab, use the listen, converse, and speak methods to train TJBot to listen to utterances, understand the natural language intents and entities, and respond by speaking out the response.
 
 You can run this lab on a physical TJBot or use the [TJBot simulator](https://ibm.biz/meet-tjbot).
 
-If you run this lab on a physical TJBot, you will need to connect a microphone and speaker to the TJBot for this lab. There is also an extra step to configure the speaker in the section titled **Running on the Raspberry Pi** at the end of this lab.
+If you run this lab on a physical TJBot, you will need to connect a microphone and speaker to the TJBot. There is also an extra step to configure the speaker in the section "[Running on the Raspberry Pi](https://link)" at the end of this lab.
 
-## IBM Cloud Account
+### IBM Cloud Account
 
-You will need a IBM Cloud account to create the IBM Watson services used in this lab. Please visit [ibm.biz/start-tjbot-lab](https://ibm.biz/start-tjbot-lab) to register for and log into your IBM Cloud.
+You will need an IBM Cloud account to create the IBM Watson services used in this lab. [Sign up](https://ibm.biz/start-tjbot-lab) for or [log in](https://ibm.biz/start-tjbot-lab) to your IBM Cloud.
 
-## Train TJBot to Listen, Converse, and Speak
+## 1. Train TJBot to listen, converse, and speak
 
-1. Create a file named `app.js`. Copy the following code. In the following steps, replace the `/* Step # */` placeholders with the code provided.
+1. Create a file named `app.js`. Copy the following code: 
 
     ```
     var TJBot = require("tjbot");
@@ -37,35 +37,37 @@ You will need a IBM Cloud account to create the IBM Watson services used in this
 
     /* Step #9 */
     ```
+    
+    In the subsequent steps in this lab, replace the `/* Step # */` placeholders with the code provided. You can check your code against the [completed Node.js program](link).
 
-2. In order for TJBot to listen and transcribe audio, we first need to configure it with a microphone. The first argument to the TJBot constructor is an array of hardware available. Add `"microphone"` to this array.
+2. Configure TJBot with a microphone to listen to and to transcribe audio. The first argument to the TJBot constructor is an array of hardware available. Add `"microphone"` to this array.
 
     ```
     var tj = new TJBot(
       ["microphone"/* Step #23 */],
     ```
 
-3. TJBot uses the Watson Speech to Text service from IBM Cloud to transcribe the audio. If you don't have an IBM Cloud account, sign up at [https://bluemix.net](https://bluemix.net). Sign into your account.
+3. TJBot uses the Watson Speech to Text service from IBM Cloud to transcribe the audio. [Sign up](https://bluemix.net) for or [log in](https://bluemix.net) to your IBM Cloud.
 
-4. Click on the **Catalog** link in the top right corner of the IBM Cloud dashboard.
+4. Click the **Catalog** link in the upper-right corner of the IBM Cloud dashboard.
 
     ![](assets/1.1.png)
 
 
-5. Click on the **Watson** category on the left. Click on the **Speech to Text** tile.
+5. Click the **Watson** category on the left. Then click the **Speech to Text** tile.
 
     ![](assets/1.2.png)
 
-6. Leave the service name as is and click **Create**.
+6. Leave the service name as is. Click **Create**.
 
     ![](assets/1.3.png)
 
-7. Click on **Service Credentials** in the menu on the left. If there are no credentials in the list, click **New credential** and **Add** to create a set of credentials. Click on **View Credentials** to display the service credentials.
+7. Click on **Service Credentials** in the menu on the left. If there are no credentials in the list, click **New credential** > **Add** to create a set of credentials. Click on **View Credentials** to display the service credentials.
 
     ![](assets/1.4.png)	    
     ![](assets/1.5.png)	        
 
-8. Replace the placeholder `/* Step #8 */` with the following code. Use your own username and password credentials from the previous step.
+8. Replace the placeholder `/* Step #8 */` with the following code, using your own username and password credentials from the previous step:
 
     ```
         speech_to_text: {
@@ -76,8 +78,7 @@ You will need a IBM Cloud account to create the IBM Watson services used in this
 
     ![](assets/1.6.png)    
 
-9. Replace the placeholder `/* Step #9 */` with the following code.
-This will instruct TJBot to start transcribing what is heard, calling the processText function after each chunk of audio is transcribed. We also call the method `stopListening` to stop any further audio capturing.
+9. Replace the placeholder `/* Step #9 */` with the following code, which instructs TJBot to start transcribing what is heard, calling the `processText` function after each chunk of audio is transcribed:
 
     ```    
     function processText(text) {
@@ -89,40 +90,45 @@ This will instruct TJBot to start transcribing what is heard, calling the proces
 
     tj.listen(processText);    
     ```
+    
+    The method `stopListening` stops any further audio capturing.
 
-10. Next, we'll use the Watson Assistant (formerly Watson Conversation) service to analyze the text and respond, which requires service credentials from IBM Cloud. Return to the IBM Cloud dashboard catalog and create a **Watson Assistant (formerly Conversation)** service.
+10. Return to the IBM Cloud dashboard catalog and create a **Watson Assistant (formerly Conversation)** service, which you will use to analyze the text and respond. 
 
     ![](assets/1.7.png)
 
-11.	Leave the service name as is and click **Create**.
+11.	Leave the service name as is. Click **Create**.
 
     ![](assets/1.8.png)
 
-12. Click on the green button labeled **Launch Tool** to launch into the Watson Assistant training tool.
+12. Click **Launch Tool** to open the Watson Assistant training tool.
 
     ![](assets/1.9.png)
 
-13. We'll use a pretrained workspace. Download the file [workspace.json](../workspace.json) to your computer. Click on the up arrow to the right of the **Create** button.
+13. To import and use as a pretrained workspace, [download](../workspace.json) the workspace.json file to your computer. 
+
+14. Click the **Import** icon (to the right of the Create button). 
 
     ![](assets/1.10.png)
-
-14. Click **Choose a file** and select the `workspace.json` file you downloaded. Click **Import** to create the new workspace.
-
+    
+    Select the workspace.json file you downloaded, and then click **Import**.
     ![](assets/1.11.png)    
 
-15. The workspace has been trained with Intents, Entities, and a Dialog of responses that provide a simple conversation that the user can ask TJBot. Explore the tabs and see how an example chatbot is designed in the Watson Assistant service.
+15. The workspace has been trained with intents, entities, and a dialog of responses that provide a simple conversation that the user can ask TJBot. Explore the tabs and see how an example chatbot is designed in the Watson Assistant service.
 
     ![](assets/1.12.png)    
 
-    In order for TJBot to use the Watson Assistant service, we first need to get the service credentials and workspace ID. Click on the deploy button in the left sidebar.
+    For TJBot to use the Watson Assistant service, you first need to get the service credentials and workspace ID. 
+    
+    Click the **Deploy** toolbar button.
 
     ![](assets/1.13.png)    
 
-16. Click on the **Credentials** tab. Copy the username and password values. Replace the placeholder `/* Step #16 */` with the following code. Use the **Username** and **Password** credentials.
+16. Click the **Credentials** tab, and copy the username and password values.
 
-    ![](assets/1.14.png)
     ![](assets/1.15.png)
-
+    
+    Then replace the placeholder `/* Step #16 */` with the following code, using the username and password credentials:
     ```
         conversation: {
           username: "0b1a23a4-e56d-7890-bf1d-23e45b6789bf",
