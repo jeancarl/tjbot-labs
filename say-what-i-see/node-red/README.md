@@ -42,7 +42,7 @@ In this lab, use the see and speak nodes to train TJBot to recognize objects and
     ![](assets/1.7.png)
     ![](assets/1.8.png)
 	
-9. Enable the camera by selecting the **Camera** checkbox.
+9. select the **Camera** checkbox to enable the camera.
 
     ![](assets/1.9.png)
 
@@ -82,7 +82,9 @@ In this lab, use the see and speak nodes to train TJBot to recognize objects and
 
     ![](assets/1.19.png)
 
-19. At the top of the configuration window, select **English (US dialect)** from the **Speak** drop-down list. Enable the speaker by selecting the **Speaker** checkbox.
+19. At the top of the configuration window:
+    a. Select **English (US dialect)** from the **Speak** drop-down list. 
+    b. Select the **Speaker** checkbox to enable the speaker.
  
     ![](assets/1.20.png)
 
