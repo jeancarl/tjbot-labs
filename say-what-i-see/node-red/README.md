@@ -42,7 +42,7 @@ In this lab, use the see and speak nodes to train TJBot to recognize objects and
     ![](assets/1.7.png)
     ![](assets/1.8.png)
 	
-9. select the **Camera** checkbox to enable the camera.
+9. Select the **Camera** checkbox to enable the camera.
 
     ![](assets/1.9.png)
 
