@@ -14,7 +14,7 @@ If you run this lab on a physical TJBot, you will need to connect a microphone a
 
 You will need an IBM Cloud account to create the IBM Watson services used in this lab. [Sign up](https://ibm.biz/start-tjbot-lab) for or [log in](https://ibm.biz/start-tjbot-lab) to IBM Cloud.
 
-## 1. Train TJBot to listen, converse, and speak
+## Train TJBot to listen, converse, and speak
 
 1. Create a file named `app.js`. Copy the following code: 
 
