@@ -16,7 +16,7 @@ You will need an IBM Cloud account to create the IBM Watson services used in thi
 
 ## Train TJBot to listen, converse, and speak
 
-1. Create a file named `app.js`. Copy the following code: 
+1. Create a file named app.js. Copy the following code: 
 
     ```
     var TJBot = require("tjbot");
@@ -274,7 +274,7 @@ In the TJBot configuration, use the applicable speaker device ID, with the forma
 
 ## Completed code
 
-The following is completed Node.js program:
+The following is the completed Node.js program:
 
 ```
 var TJBot = require("tjbot");
@@ -323,6 +323,6 @@ function processText(text) {
 tj.listen(processText);
 ```
 
-## IBM Coder Challenge
+## IBM Coder challenge
 
 When you complete this lab, visit the [IBM Coder challenge](https://ibm.biz/ibm-coder-tjbot) to earn credit.
