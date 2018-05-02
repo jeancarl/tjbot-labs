@@ -105,7 +105,7 @@ You will need an IBM Cloud account to create the IBM Watson services used in thi
 
     ![](assets/1.9.png)
 
-13. To import and use as a pretrained workspace, [download](../workspace.json) the workspace.json file to your computer. 
+13. To use a pretrained workspace, [download](../workspace.json) the workspace.json file to your computer. 
 
 14. Click the **Import** icon (to the right of the Create button). 
 
