@@ -12,11 +12,11 @@ If you run this lab on a physical TJBot, you will need to connect a microphone a
 
 ### IBM Cloud Account
 
-You will need an IBM Cloud account to create the IBM Watson services used in this lab. [Sign up](https://ibm.biz/start-tjbot-lab) for or [log in](https://ibm.biz/start-tjbot-lab) to your IBM Cloud.
+You will need an IBM Cloud account to create the IBM Watson services used in this lab. [Sign up](https://ibm.biz/start-tjbot-lab) for or [log in](https://ibm.biz/start-tjbot-lab) to IBM Cloud.
 
-## 1. Train TJBot to listen, converse, and speak
+## Train TJBot to listen, converse, and speak
 
-1. Create a file named `app.js`. Copy the following code: 
+1. Create a file named app.js. Copy the following code: 
 
     ```
     var TJBot = require("tjbot");
@@ -47,7 +47,7 @@ You will need an IBM Cloud account to create the IBM Watson services used in thi
       ["microphone"/* Step #23 */],
     ```
 
-3. TJBot uses the Watson Speech to Text service from IBM Cloud to transcribe the audio. [Sign up](https://bluemix.net) for or [log in](https://bluemix.net) to your IBM Cloud.
+3. TJBot uses the Watson Speech to Text service from IBM Cloud to transcribe the audio. [Sign up](https://bluemix.net) for or [log in](https://bluemix.net) to IBM Cloud.
 
 4. Click the **Catalog** link in the upper-right corner of the IBM Cloud dashboard.
 
@@ -105,7 +105,7 @@ You will need an IBM Cloud account to create the IBM Watson services used in thi
 
     ![](assets/1.9.png)
 
-13. To import and use as a pretrained workspace, [download](../workspace.json) the workspace.json file to your computer. 
+13. To use a pretrained workspace, [download](../workspace.json) the workspace.json file to your computer. 
 
 14. Click the **Import** icon (to the right of the Create button). 
 
@@ -274,7 +274,7 @@ In the TJBot configuration, use the applicable speaker device ID, with the forma
 
 ## Completed code
 
-The following is completed Node.js program:
+The following is the completed Node.js program:
 
 ```
 var TJBot = require("tjbot");
@@ -323,6 +323,6 @@ function processText(text) {
 tj.listen(processText);
 ```
 
-## IBM Coder Challenge
+## IBM Coder challenge
 
 When you complete this lab, visit the [IBM Coder challenge](https://ibm.biz/ibm-coder-tjbot) to earn credit.
