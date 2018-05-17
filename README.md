@@ -61,6 +61,18 @@ _Uses_: Camera, Speaker, Watson Visual Recognition, Watson Text to Speech
 
 Train TJBot to take a photo with the Raspberry Pi, classify it with Watson Visual Recognition, and speak what objects and colors are seen with Watson Text to Speech and the speaker.
 
+---
+
+### Translate What I Hear
+
+*Lab Resources*: [Node.js](translate-what-i-hear/nodejs)
+
+*Uses*: Microphone, Speaker, Watson Speech to Text, Watson Language Translator, Watson Text to Speech
+
+Train TJBot to listen to phrases, translate to French, and speak out the translation.
+
+---
+
 ## License
 
 This code is licensed under Apache 2.0. Full license text is available in [LICENSE](LICENSE).
