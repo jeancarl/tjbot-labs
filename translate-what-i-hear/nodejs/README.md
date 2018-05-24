@@ -22,18 +22,18 @@ You will need a IBM Cloud account to create the IBM Watson services used in this
     var TJBot = require("tjbot");
     
     var tj = new TJBot(
-      [/* Step #2 *//* Step #20 */],
+      [/* Step #2 *//* Step #19 */],
       {
-        /* Step #19 */
+        /* Step #18 */
       },
       {
-        /* Step #8 */
-        /* Step #13 */
-        /* Step #18 */
+        /* Step #7 */
+        /* Step #12 */
+        /* Step #17 */
       }
     );
     
-    /* Step #9 */
+    /* Step #8 */
     ```
     
 2. For TJBot to listen and transcribe audio, configure it with a microphone. The first argument to the TJBot constructor is an array of hardware available. Add `"microphone"` to this array.
@@ -62,7 +62,7 @@ TJBot uses the Watson Speech to Text service from IBM Cloud to transcribe the au
     ![](assets/1.4.png)	    
     ![](assets/1.5.png)	        
 
-7. Replace the placeholder `/* Step #8 */` with the following code. Use your own username and password credentials from the previous step. 
+7. Replace the placeholder `/* Step #7 */` with the following code. Use your own username and password credentials from the previous step. 
 
     ```
         speech_to_text: { 
@@ -73,13 +73,13 @@ TJBot uses the Watson Speech to Text service from IBM Cloud to transcribe the au
     
     ![](assets/1.6.png)    
 
-8. Replace the placeholder `/* Step #9 */` with the following code. 
+8. Replace the placeholder `/* Step #8 */` with the following code. 
 This code instructs TJBot to start transcribing what is heard and call this function after the first chunk of audio is transcribed.
     
     ```    
     tj.listen(text => {
       tj.stopListening();
-      /* Step #14 */
+      /* Step #13 */
     });
     ```
 
@@ -98,7 +98,7 @@ Next, you will train TJBot to translate the text using the Watson Language Trans
     ![](assets/1.9.png)	
     ![](assets/1.10.png)    
 
-12. Replace the placeholder `/* Step #13 */` with the following code. Use your own username and password credentials from the previous step. 
+12. Replace the placeholder `/* Step #12 */` with the following code. Use your own username and password credentials from the previous step. 
 
     ```
       language_translator: {
@@ -109,12 +109,12 @@ Next, you will train TJBot to translate the text using the Watson Language Trans
 
     ![](assets/1.11.png)   
 
-13. Replace the placeholder `/* Step #14 */` with the following code. This code translates the text from English (en) to French (fr).
+13. Replace the placeholder `/* Step #13 */` with the following code. This code translates the text from English (en) to French (fr).
 
     ```
       tj.translate(text, "en", "fr")
         .then((response) => {
-          /* Step #21 */
+          /* Step #20 */
         });
     ```     
 
@@ -128,12 +128,12 @@ Next, you will train TJBot to speak this translation by using the Watson Text to
 
     ![](assets/1.13.png)
 
-17. Click **Service Credentials > View Credentials** to display the service credentials.
+16. Click **Service Credentials > View Credentials** to display the service credentials.
 
     ![](assets/1.14.png)	
     ![](assets/1.15.png)    
 
-18. Replace the placeholder `/* Step #18 */` with the following code. Use your own username and password credentials from the previous step. 
+17. Replace the placeholder `/* Step #17 */` with the following code. Use your own username and password credentials from the previous step. 
 
     ```
     text_to_speech: {
@@ -144,7 +144,7 @@ Next, you will train TJBot to speak this translation by using the Watson Text to
 
     ![](assets/1.16.png)   
 
-19. Replace the placeholder `/* Step #19 */` with the following code. Configure TJBot with the gender of the voice (`male` or `female`) and what language to use (`fr-FR` is the language code for French). In this example, you'll use the French feminine voice model to synthesize the translation.
+18. Replace the placeholder `/* Step #18 */` with the following code. Configure TJBot with the gender of the voice (`male` or `female`) and what language to use (`fr-FR` is the language code for French). In this example, you'll use the French feminine voice model to synthesize the translation.
 
     ```
         robot: {
@@ -157,20 +157,20 @@ Next, you will train TJBot to speak this translation by using the Watson Text to
 
 For TJBot to play audio, you need to configure it with a speaker. 
 
-20. Add `"speaker"` to the array of the first argument to the TJBot constructor. If you're using a physical TJBot, see the section below "Running on the Raspberry Pi" for more information about the speaker device ID.
+19. Add `"speaker"` to the array of the first argument to the TJBot constructor. If you're using a physical TJBot, see the section below "Running on the Raspberry Pi" for more information about the speaker device ID.
 
     ```
     var tj = new TJBot(
       ["microphone","speaker"], 
     ```
     
-21. Replace the placeholder `/* Step #21 */` with the following code. This will instruct TJBot to speak out loud the translation returned from the Watson Language Translator service.
+20. Replace the placeholder `/* Step #21 */` with the following code. This will instruct TJBot to speak out loud the translation returned from the Watson Language Translator service.
 
     ```
           tj.speak(response.translations[0].translation);
     ```
 
-22. Run the code. Speak a phrase, such as `Hello`. TJBot will transcribe the utterance captured via the microphone by using the Watson Speech to Text service, translate the phrase by using the Watson Language Translator service, and then speak out the translation by using the Watson Text to Speech service through the speaker.
+21. Run the code. Speak a phrase, such as `Hello`. TJBot will transcribe the utterance captured via the microphone by using the Watson Speech to Text service, translate the phrase by using the Watson Language Translator service, and then speak out the translation by using the Watson Text to Speech service through the speaker.
 
     An example translation is:
 
