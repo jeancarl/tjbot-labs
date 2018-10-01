@@ -10,10 +10,6 @@ You can run this lab on a physical TJBot or use the [TJBot simulator](https://ib
 
 If you run this lab on a physical TJBot, you will need to connect a microphone and LED to the TJBot for this lab. 
 
-## IBM Cloud Account
-
-You will need a IBM Cloud account to create the IBM Watson services used in this lab. Please visit [ibm.biz/start-tjbot-lab](https://ibm.biz/start-tjbot-lab) to register for and log into your IBM Cloud.
-
 ## Train TJBot to Listen and React to Emotions
 
 1. Create a file named `app.js`. Copy the following code. In the following steps, replace the `/* Step # */` placeholders with the code provided. 
@@ -42,25 +38,23 @@ You will need a IBM Cloud account to create the IBM Watson services used in this
 
 3. TJBot uses the Watson Speech to Text service from IBM Cloud to transcribe the audio. If you don't have an IBM Cloud account, sign up at [https://bluemix.net](https://bluemix.net). Sign into your account. 
 
-4. Click on the **Catalog** link in the top right corner of the IBM Cloud dashboard. 
+4. Click the **Catalog** link in the top menu of the IBM Cloud dashboard. 
 
     ![](assets/1.1.png)
     
-
-5. Click on the **Watson** category on the left. Click on the **Speech to Text** tile.
+5. Click the **AI** category on the left. Click the **Speech to Text** tile.
 
     ![](assets/1.2.png)
 
-6. Leave the service name as is and click **Create**.
+6. Leave the service name as is. Click **Create**.
 
     ![](assets/1.3.png)
 
-7. Click on **Service Credentials** in the menu on the left. If there are no credentials in the list, click **New credential** and **Add** to create a set of credentials. Click on **View Credentials** to display the service credentials.
+7. Click **Show Credentials**.
 
-    ![](assets/1.4.png)	    
-    ![](assets/1.5.png)	        
+    ![](assets/1.4.png)
 
-8. Replace the placeholder `/* Step #8 */` with the following code. Use your own API key from the previous step. 
+8. Replace the placeholder `/* Step #8 */` with the following code, using the username and password from the previous step. 
 
     ```
         speech_to_text: { 
@@ -69,10 +63,9 @@ You will need a IBM Cloud account to create the IBM Watson services used in this
         }, 
     ```
     
-    ![](assets/1.6.png)    
+    ![](assets/1.5.png)    
 
-9. Replace the placeholder `/* Step #9 */` with the following code. 
-This will instruct TJBot to start transcribing what is heard, calling the processText function after each chunk of audio is transcribed.
+9. Replace the placeholder `/* Step #9 */` with the following code:
     
     ```    
     function processText(text) {
@@ -83,21 +76,22 @@ This will instruct TJBot to start transcribing what is heard, calling the proces
     
     tj.listen(processText);    
     ```
+    
+    This will instruct TJBot to start transcribing what is heard, calling the processText function after each chunk of audio is transcribed.
 
-10. Next, we'll train TJBot to analyze the emotion of these utterances using the Watson Tone Analyzer service, which requires service credentials from IBM Cloud. Return to the IBM Cloud dashboard catalog and create a **Watson Tone Analyzer** service.
+10. Next, we'll train TJBot to analyze the emotion of these utterances using the Watson Tone Analyzer service, which requires service credentials from IBM Cloud. Return to the IBM Cloud dashboard catalog and create a **Tone Analyzer** service.
+
+    ![](assets/1.6.png)
+
+11.	Leave the service name as is. Click **Create**.
 
     ![](assets/1.7.png)
 
-11.	Leave the service name as is and click **Create**.
+12.	Click **Show Credentials**.
 
-    ![](assets/1.8.png)
+    ![](assets/1.8.png)	
 
-12.	Click on **Service Credentials** in the menu on the left. If there are no credentials in the list, click **New credential** and **Add** to create a set of credentials. Click on **View Credentials** to display the service credentials.
-
-    ![](assets/1.9.png)	
-    ![](assets/1.10.png)    
-
-13. Replace the placeholder `/* Step #13 */` with the following code. Use your own username and password credentials from the previous step. 
+13. Replace the placeholder `/* Step #13 */` with the following code, using the username and password credentials from the previous step:
 
     ```
         tone_analyzer: {
@@ -106,9 +100,9 @@ This will instruct TJBot to start transcribing what is heard, calling the proces
         }
     ```
 
-    ![](assets/1.11.png)   
+    ![](assets/1.9.png)   
 
-14. Replace the placeholder `/* Step #14 */` with the following code. This code extracts out the emotion that is most prevalent in the utterance.
+14. Replace the placeholder `/* Step #14 */` with the following code:
 
     ```
       tj.analyzeTone(text).then(response => {
@@ -124,6 +118,8 @@ This will instruct TJBot to start transcribing what is heard, calling the proces
       });
     ```     
 
+    This code extracts out the emotion that is most prevalent in the utterance.
+
 15. In order for TJBot to shine a color, we need to configure it with a LED. Add `"led"` to the array of the first argument to the TJBot constructor.
 
     ```
@@ -131,7 +127,7 @@ This will instruct TJBot to start transcribing what is heard, calling the proces
       ["microphone","led"], 
     ```
 
-16. Replace the placeholder `/* Step #16 */` with the following code. This code maps each emotion to a color: anger (red), disgust (green), fear (magenta), joy (yellow) and sadness (blue).
+16. Replace the placeholder `/* Step #16 */` with the following code:
 
     ```
         var colors = {
@@ -144,7 +140,9 @@ This will instruct TJBot to start transcribing what is heard, calling the proces
             
         tj.shine(colors[top.tone_id]);
       
-    ```      
+    ``` 
+
+    This code maps each emotion to a color: anger (red), disgust (green), fear (magenta), joy (yellow) and sadness (blue).         
 
 17. Run the code. Speak a phrase. TJBot will transcribe the audio with the Watson Speech to Text service, analyze the emotions with the Watson Tone Analyzer service, and shine a corresponding LED color representing one of the emotions.
 
@@ -196,10 +194,6 @@ function processText(text) {
 
 tj.listen(processText);
 ```
-
-## IBM Coder Challenge
-
-When you complete this lab, visit the [IBM Coder challenge](https://ibm.biz/ibm-coder-tjbot) to earn credit.
 
 ## Notes
 

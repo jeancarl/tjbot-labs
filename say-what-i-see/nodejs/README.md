@@ -1,22 +1,16 @@
-# Lab 2: Say what I see
+# Say What I See
 
 ![](assets/tjbot.png)
 
 ## Requirements
 
-In this lab, use the see and speak capabilities to train TJBot to recognize objects and to speak what is seen. 
+In this lab, we will use the see and speak capabilities to train TJBot to recognize objects and speak what is seen. You can run this lab on a physical TJBot or use the [TJBot simulator](https://ibm.biz/meet-tjbot).
 
-You can run this lab on a physical TJBot or use the [TJBot simulator](https://ibm.biz/meet-tjbot).
-
-If you run this lab on a physical TJBot, you will need to connect a Raspberry Pi camera and speaker to the TJBot. There is also an extra step to configure the speaker in the section "[Running on the Raspberry Pi](https://link)" at the end of this lab.
-
-### IBM Cloud Account
-
-You will need an IBM Cloud account to create the IBM Watson services used in this lab. [Sign up](https://ibm.biz/start-tjbot-lab) for or [log in](https://ibm.biz/start-tjbot-lab) to IBM Cloud.
+If you run this lab on a physical TJBot, you will need to connect a Raspberry Pi camera and speaker to the TJBot for this lab. There is also an extra step to configure the speaker in the section titled **Running on the Raspberry Pi** at the end of this lab.
 
 ## Train TJBot to See Objects and Speak
 
-1. Create a file named app.js. Copy the following code: 
+1. Create a file named `app.js`. Copy the following code. In the following steps, we'll replace the /* Step # */ placeholders with code. 
 
     ```
     var TJBot = require("tjbot");
@@ -34,46 +28,44 @@ You will need an IBM Cloud account to create the IBM Watson services used in thi
     /* Step #9 */
     ```
     
-    In the subsequent steps in this lab, replace the `/* Step # */` placeholders with the code provided. You can check your code against the [completed Node.js program](link).
-    
-2. Configure TJBot with a camera to be able to take a picture. The first argument to the TJBot constructor is an array of hardware available. Add `"camera"` to this array.
+2. In order for TJBot to take a picture, we first need to configure it with a camera. The first argument to the TJBot constructor is an array of hardware available. Add `"camera"` to this array.
 
     ```
     var tj = new TJBot(
       ["camera"],
     ```
 
-3. TJBot uses the Watson Visual Recognition service from IBM Cloud to classify objects and colors in the picture. [Sign up](https://bluemix.net) for or [log in](https://bluemix.net) to IBM Cloud.
+3. TJBot uses the Watson Visual Recognition service from IBM Cloud to classify objects and colors in the picture. If you don't have an IBM Cloud account, sign up at [https://bluemix.net](https://bluemix.net). Sign into your account. 
 
-4. Click the **Catalog** link in the upper right corner of the IBM Cloud dashboard. 
+4. Click the **Catalog** link in the top menu of the IBM Cloud dashboard.  
 
     ![](assets/1.1.png)
     
 
-5. Click the **Watson** category on the left. Then click the **Visual Recognition** tile.
+5. Click the **AI** category on the left. Click the **Visual Recognition** tile.
 
     ![](assets/1.2.png)
 
-6. Leave the service name as is, and click **Create**.
+6. Leave the service name as is. Click **Create**.
 
     ![](assets/1.3.png)
 
-7. Click **Service Credentials** in the menu on the left. If there are no credentials in the list, click **New credential** > **Add** to create a set of credentials. Click **View Credentials** to display the service credentials.
+7. Click **Show Credentials**.
 
     ![](assets/1.4.png)	    
-    ![](assets/1.5.png)	        
 
-8. Replace the placeholder `/* Step #8 */` with the following code, using your own API key from the previous step:
+8. Replace the placeholder `/* Step #8 */` with the following code, using the API key from the previous step. 
 
     ```
       visual_recognition: {
-        api_key: "g0h123kjf5h3m620n5h1175mrk54h32vc54ji543"
+        iam_apikey: "g0h123kjf5h3m620n5h1175mrk54h32vc54ji543-lFL"
       },   
     ```
     
-    ![](assets/1.6.png)    
+    ![](assets/1.5.png)    
 
-9. Replace the placeholder `/* Step #9 */` with the following code, which instruct TJBot to take a photo and return an array of objects and colors:
+9. Replace the placeholder `/* Step #9 */` with the following code. 
+This will instruct TJBot to take a photo and return an array of objects and colors. 
     
     ```    
     tj.see(objects => {
@@ -85,7 +77,7 @@ You will need an IBM Cloud account to create the IBM Watson services used in thi
     });    
     ```
 
-    The `see` method produces an array with names of objects and colors in the photo analyzed. Here's what an example response looks like:
+    The see method produces an array with names of objects and colors in the photo analyzed. Here's what an example response looks like:
 
     ```
     [
@@ -104,36 +96,37 @@ You will need an IBM Cloud account to create the IBM Watson services used in thi
     ]
     ```
 
-10. Replace the placeholder `/* Step #10 */` with the following code that loops through this result and concatenates the items into one string:
+10. Replace the placeholder `/* Step #10 */` with the following code that loops through this result and concatenates the items into one string.
     
     ```
       var text = "T J Bot sees " + objects.map(item => item["class"]).join(", ");
       console.log(text);
     ```
 
-11. Next, we'll train TJBot to speak out this string using the Watson Text to Speech service, which requires service credentials from IBM Cloud. Return to the IBM Cloud dashboard catalog and create a **Text to Speech Watson** service.
+11. Next, we'll train TJBot to speak out this string using the Watson Text to Speech service, which requires service credentials from IBM Cloud. Return to the IBM Cloud dashboard catalog and create a Text to Speech Watson service.
 
-12.	Leave the service name as is, and click **Create**.
+    ![](assets/1.6.png)
+
+12.	Leave the service name as is. Click **Create**.
 
     ![](assets/1.7.png)
 
-13.	Click **Service Credentials** in the menu on the left. If there are no credentials in the list, click **New credential** > **Add** to create a set of credentials. Click **View Credentials** to display the service credentials.
+13.	Click **Show Credentials**.
 
     ![](assets/1.8.png)	
-    ![](assets/1.9.png)    
 
-14. Replace the placeholder `/* Step #14 */` with the following code, using your own username and password credentials from the previous step:
+14. Replace the placeholder `/* Step #14 */` with the following code, using the username and password credentials from the previous step. 
 
     ```
     text_to_speech: {
-      username: "f8b532e1-4151-4993-92ee-89bc5a23890c",
-      password: "f4G1M3B5onrP"
+      username: "dec28251-d359-4f88-a714-9f36694c4218",
+      password: "5ZwSwrciqoHG"
     }
     ```
 
-    ![](assets/1.10.png)   
+    ![](assets/1.9.png)   
 
-15. Replace the placeholder `/* Step #15 */` with the following code to configure TJBot with the gender of the voice (`male` or `female`) and what language to use (`en-US` is for the US English dialect): 
+15. Replace the placeholder `/* Step #15 */` with the following code. Configure TJBot with the gender of the voice (`male` or `female`) and what language to use (`en-US` is for the US English dialect). 
 
     ```
     robot: {
@@ -144,20 +137,20 @@ You will need an IBM Cloud account to create the IBM Watson services used in thi
     }
     ```     
 
-16. To configure TJBot with a speaker to play audio, add `"speaker"` to the array of the first argument to the TJBot constructor. If you're using a physical TJBot, refer to the "[Running on the Raspberry Pi](link)" section for more information about the speaker device ID.
+16. In order for TJBot to play audio, we need to configure it with a speaker. Add `"speaker"` to the array of the first argument to the TJBot constructor. If you're using a physical TJBot, please refer to the section below titled **Running on the Raspberry Pi** for more information about the speaker device ID.
 
     ```
     var tj = new TJBot(
       ["camera","speaker"], 
     ```
     
-17. Replace the placeholder `/* Step #17 */` with the following code, which instructs TJBot to speak out the value of the variable text (the concatenated list of objects and colors it sees):
+17. Replace the placeholder `/* Step #17 */` with the following code. This will instruct TJBot to speak out the value of the variable text (the concatenated list of objects and colors it sees).
 
     ```
       tj.speak(text);
     ```
 
-18. Run the code. When a photo is taken, it is analyzed with the Watson Visual Recognition service, a message is constructed with the objects and colors recognized, and it is spoken out using the speaker.
+18. Run the code. When a photo is taken, it is analyzed with the Watson Visual Recognition service, a message is constructed with the objects and colors recognized, and is spoken out via the speaker.
 
     An example is:
 
@@ -167,7 +160,7 @@ You will need an IBM Cloud account to create the IBM Watson services used in thi
 
 Depending on the speaker you use, you may need to specify the speaker device ID. Determine the Speaker Device ID by running the command `aplay -l` on the Raspberry Pi. In the example output shown below, the USB speaker attached is accessible on card `2`, device `0`.
 
-![](assets/1.11.png)
+![](assets/1.10.png)
 
 In the TJBot configuration, use the applicable speaker device ID, with the format `plughw:<card>,<device>`
 
@@ -178,9 +171,9 @@ In the TJBot configuration, use the applicable speaker device ID, with the forma
     }
 ```
 
-## Completed code
+## Completed Code
 
-The following is the completed Node.js program:
+The completed Node.js program is shown below.
 
 ```
 var TJBot = require("tjbot");
@@ -197,7 +190,7 @@ var tj = new TJBot(
   }, 
   {
     visual_recognition: {
-      api_key: ""
+      iam_apikey: ""
     },
     text_to_speech: {
       username: "",
@@ -214,7 +207,3 @@ tj.see(objects => {
   tj.speak(text);
 });
 ```
-
-## IBM Coder challenge
-
-When you complete this lab, visit the [IBM Coder challenge](https://ibm.biz/ibm-coder-tjbot) to earn credit.

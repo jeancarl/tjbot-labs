@@ -1,102 +1,89 @@
-# Lab 2: Say what I see
+# Say What I See
 
 ![](assets/tjbot.png)
 
 ## Requirements
 
-In this lab, use the see and speak nodes to train TJBot to recognize objects and speak what is seen. You will need a Raspberry Pi camera and speaker connected to the TJBot for this lab. 
+In this lab, we'll use the see and speak nodes to train TJBot to recognize objects and speak what is seen. You will need a Raspberry Pi camera and speaker connected to the TJBot for this lab. 
 
-## Train TJBot to see objects and to speak
+## Train TJBot to See Objects and Speak
 
-1. In the Node-RED editor running on the Raspberry Pi, drag an inject node (![](assets/nodes/inject.png)) onto the canvas. 
-
-2. Double-click the node and configure it, as shown below:
+1. In the Node-RED editor running on the Raspberry Pi, drag an ![](assets/nodes/inject.png) node onto the canvas. Double click the node and configure as shown below.
 
     ![](assets/1.1.png)
 
-3. Add a see node (![](assets/nodes/see.png)), and edit it.
-
-   a. The see node has several modes: recognize text, recognize objects, and take a photo. Select **See (identify objects)** from the **Mode** drop-down list.
-
-   b. The see node uses the Watson Visual Recognition service, which requires service credentials from IBM Cloud. Click on the pencil icon to the right of the **Bot** drop-down list. 
+2. Add a ![](assets/nodes/see.png) node as shown below. The see node has several modes: recognize text, recognize objects, and take a photo. Select **See (identify objects)** from the **Mode** dropdown menu.
 
     ![](assets/1.2.png)
-
-4. Click on the link icon next to the "Visual Recognition" heading to open the IBM Cloud console and create a Watson Visual Recognition service instance.
-
-    ![](assets/1.3.png)
     
-5. [Sign up](https://bluemix.net) for or [log in](https://bluemix.net) to IBM Cloud, if prompted. 
+    The see node uses the Watson Visual Recognition service, which requires service credentials from IBM Cloud. Click the pencil icon to the right of the **Bot** dropdown menu. 
 
-6. Leave the service name as is, and click **Create**.
+3. Click the link icon next to the **Visual Recognition** heading to launch into the IBM Cloud console and create a Watson Visual Recognition service instance.
+
+    ![](assets/1.3.png)
+4. If you don't have an IBM Cloud account, sign up for an account. Sign into your account if prompted. Leave the service name as is. Click **Create**.
 
     ![](assets/1.4.png)
 
-7. Click **Service Credentials** in the menu on the left. If there are no credentials in the list, click **New credential** > **Add** to create a set of credentials. Click **View Credentials** to display the service credentials.
+5. Click **Show Credentials**.
 
     ![](assets/1.5.png)	
+
+6. Copy the IAM API key into the field back in the Node-RED editor under the **Visual Recognition** section. 
+
     ![](assets/1.6.png)
-
-8. Copy the API key into the **Visual Recognition** section of the Node-RED editor.
-
     ![](assets/1.7.png)
-    ![](assets/1.8.png)
+    
+    **Note**: Visual Recognition service instances created before May 23, 2018 use a different authentication mechanism. Copy the API key into the API Key field instead.     
 	
-9. Select the **Camera** checkbox to enable the camera.
+7. Enable the camera by ticking the checkbox labeled **Camera**. 
+
+    ![](assets/1.8.png)
+
+8.	The see node produces a message with names of objects and colors in the photo analyzed, with the response being passed in the `msg.payload` property. Add a ![](assets/nodes/function.png) node to loop through the results and concatenate them into a new message.
 
     ![](assets/1.9.png)
 
-10. The see node produces a message with names of objects and colors in the photo analyzed, with the response being passed in the `msg.payload` property. Add a function node (![](assets/nodes/function.png)) to loop through the results and concatenate them into a new message.
+9.	Add a ![](assets/nodes/speak.png) node as shown below. The speak node uses the Watson Text to Speech service, which requires service credentials from IBM Cloud. Click the pencil icon to the right of the **Bot** dropdown menu. 
 
     ![](assets/1.10.png)
 
-11. Add a speak node (![](assets/nodes/speak.png)). 
-
-12. The speak node uses the Watson Text to Speech service, which requires service credentials from IBM Cloud. Click on the pencil icon to the right of the **Bot** drop-down list. 
+10.	Click the link icon next to the **Text to Speech** heading to launch into the IBM Cloud console and create a Watson Text to Speech service instance.
 
     ![](assets/1.11.png)
 
-13. Click on the link icon next to the "Text to Speech" heading to open the IBM Cloud console and create a Watson Text to Speech service instance.
+11.	Leave the service name as is. Click **Create**.
 
     ![](assets/1.12.png)
 
-14. Leave the service name as is, and click **Create**.
+12.	Click **Show Credentials**.
 
-    ![](assets/1.13.png)
+    ![](assets/1.13.png)	
 
-15. Click **Service Credentials** in the menu on the left. If there are no credentials in the list, click **New credential** > **Add** to create a set of credentials. Click **View Credentials** to display the service credentials.
+13.	Copy the username and password into the fields back in the Node-RED editor under the **Text to Speech** section.
 
-    ![](assets/1.14.png)	
-    ![](assets/1.15.png)    
+    ![](assets/1.14.png)    
 
-16. Copy the username and password into the **Text to Speech** section of the Node-RED editor.
+    ![](assets/1.15.png)
+14.	Determine the Speaker Device ID by running the command `aplay -l` on the Raspberry Pi. In the example output shown below, the USB speaker attached is accessible on card `2`, device `0`.
 
     ![](assets/1.16.png)
-    ![](assets/1.17.png)
-    
-17. Determine the Speaker Device ID by running the command `aplay -l` on the Raspberry Pi. In the example output shown below, the USB speaker attached is accessible on card `2`, device `0`.
 
+    In the TJBot configuration, enter the applicable speaker device ID, with the format `plughw:<card>,<device>`
+
+    ![](assets/1.17.png)
+
+15. At the top of the configuration window, select **Male** or **Female** from the **Gender** dropdown menu. Select **English (US dialect)** from the **Speak** dropdown menu. Enable the speaker by ticking the checkbox labeled **Speaker**. 
+ 
     ![](assets/1.18.png)
 
-18. In the TJBot configuration, enter the applicable speaker device ID, with the format `plughw:<card>,<device>`.
+16.	Connect the nodes together as shown below.
 
     ![](assets/1.19.png)
 
-19. At the top of the configuration window:
-    a. Select **English (US dialect)** from the **Speak** drop-down list. 
-    b. Select the **Speaker** checkbox to enable the speaker.
- 
-    ![](assets/1.20.png)
+17.	Click the ![](assets/nodes/deploy.png) button in the top-right corner of the Node-RED editor to save and deploy the changes.
 
-20. Connect the nodes together, as shown below:
-
-    ![](assets/1.21.png)
-
-21. Click the **Deploy** button (![](assets/nodes/deploy.png)) in the upper right corner of the Node-RED editor to save and deploy the changes.
-
-22. Click the tab to the left of the inject node to take a picture with TJBot's camera. 
-
-    When the photo is analyzed with the Watson Visual Recognition service, a message is constructed with the objects and colors recognized, and is spoken out using the speaker.
+18.	Click the tab to the left of the inject node to take a picture with TJBot's camera. When the photo is analyzed with the Watson Visual Recognition service, a message is constructed with the objects and colors recognized, and is spoken out via the speaker.
 
     An example is:
 
