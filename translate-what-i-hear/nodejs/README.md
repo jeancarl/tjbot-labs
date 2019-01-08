@@ -8,7 +8,7 @@ In this lab, you'll use the listen, translate, and speak methods to train TJBot 
 
 You can run this lab on a physical TJBot or use the [TJBot simulator](https://ibm.biz/meet-tjbot).
 
-If you run this lab on a physical TJBot, you need to connect a microphone and speaker to the TJBot. 
+If you run this lab on a physical TJBot, you will need to connect a microphone and speaker to the TJBot for this lab. 
 
 ## IBM Cloud account
 
@@ -36,16 +36,14 @@ You will need a IBM Cloud account to create the IBM Watson services used in this
     /* Step #9 */
     ```
     
-2. In order for TJBot to listen and transcribe audio, you first need to configure it with a microphone. The first argument to the TJBot constructor is an array of hardware available. Add `"microphone"` to this array.
+2. For TJBot to listen and transcribe audio, you first need to configure it with a microphone. The first argument to the TJBot constructor is an array of hardware available. Add `"microphone"` to this array.
 
     ```
     var tj = new TJBot(
       ["microphone"],
     ```
 
-
-
-3. TJBot uses the Watson Speech to Text service from IBM Cloud to transcribe the audio. If you don't have an IBM Cloud account, sign up at [https://bluemix.net](https://bluemix.net). Sign into your account.
+3. TJBot uses the Watson Speech to Text service from IBM Cloud to transcribe the audio. Sign into your IBM Cloud account.
 
 4. Click the **Catalog** link in the top menu of the IBM Cloud dashboard.
 
@@ -63,12 +61,11 @@ You will need a IBM Cloud account to create the IBM Watson services used in this
 
     ![](assets/1.4.png)	    
 
-8. Replace the placeholder `/* Step #8 */` with the following code. Use your own username and password credentials from the previous step. 
+8. Replace the placeholder `/* Step #8 */` with the following code. Use your own API key from the previous step. 
 
     ```
         speech_to_text: { 
-          username: "cf63b1f3-ef18-4628-86c8-6b1871e076b9",
-          password: "MWNwz3qcdIab"
+          apikey: "T7XjA4ZpXVb8Zw4YZ9w6c7xpvqgSa5zmnpY-1g0u1Y7f"
         }, 
     ```
 
@@ -99,7 +96,7 @@ You will need a IBM Cloud account to create the IBM Watson services used in this
 
     ```
       language_translator: {
-        "iam_apikey": "abCDefGhijKl_rcWqnJmdFbk96FRpaD_7KCL2dXBl6PB"
+        "apikey": "C0ykGIGuzXTjDsb9muJXUK47O4jH5osQ1bDDSr3JBJlf"
       },
     ```
 
@@ -126,12 +123,11 @@ You will need a IBM Cloud account to create the IBM Watson services used in this
 
     ![](assets/1.12.png)	
 
-18. Replace the placeholder `/* Step #18 */` with the following code. Use your own username and password credentials from the previous step. 
+18. Replace the placeholder `/* Step #18 */` with the following code. Use your own API key from the previous step. 
 
     ```
     text_to_speech: {
-      username: "dec28251-d359-4f88-a714-9f36694c4218",
-      password: "5ZwSwrciqoHG"
+      apikey: "q5wt6VlBi5IuljwK-vbI8sCwkQrHCaAYNXeftnwCJilc"
     }
     ```
 
@@ -201,16 +197,13 @@ var tj = new TJBot(
   },
   {
     speech_to_text: {
-      "username": "",
-	  "password": ""
+      apikey: ""
     },
     language_translator: {
-      "username": "",
-      "password": ""
+      apikey: ""
     },
     text_to_speech: {
-      username: "",
-      password: ""
+      apikey: ""
     }    
   }
 );

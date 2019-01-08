@@ -4,7 +4,7 @@
 
 ## Requirements
 
-In this lab, we'll use the listen, converse, and speak nodes to train TJBot to listen to utterances, understand the natural language intents and entities, and respond by speaking out the response.
+In this lab, you'll use the listen, converse, and speak nodes to train TJBot to listen to utterances, understand the natural language intents and entities, and respond by speaking out loud the response.
 
 You will need a microphone and speaker connected to the TJBot for this lab. 
 
@@ -25,23 +25,23 @@ You will need a microphone and speaker connected to the TJBot for this lab.
 
     ![](assets/1.4.png)
 
-4. Click the link icon next to the **Speech to Text** heading to launch into the IBM Cloud console and create a Watson Speech to Text service instance.
+4. Click the link icon next to the **Speech to Text** heading to launch into the IBM Cloud console. Sign into your IBM Cloud account if prompted. 
 
     ![](assets/1.5.png)
 
-5. If you don't have an IBM Cloud account, sign up for an account. Sign into your account if prompted. Leave the service name as is. Click **Create**.
+5. Leave the service name as is. Click **Create**.
 
     ![](assets/1.6.png)
 
-6. Click **Show Credentials**.
+6. In the **Manage** tab, click **Show Credentials**.
 
-    ![](assets/1.7.png)    
+    ![](assets/1.7.png)
 
-7. Copy the username and password into the fields back in the Node-RED editor under the **Speech to Text** section.
+7. Copy the API Key into the field back in the Node-RED editor under the **Speech to Text** section.
 
     ![](assets/1.8.png)
 
-    ![](assets/1.9.png)    
+    ![](assets/1.9.png)
 
 8. At the top of the configuration window, select **US English** from the **Listen** dropdown menu. Enable the microphone by ticking the checkbox labeled **Microphone**.
 
@@ -65,37 +65,37 @@ You will need a microphone and speaker connected to the TJBot for this lab.
 
     ![](assets/1.14.png)
 
-13. Click the button labeled **Launch Tool** to launch into the Watson Assistant training tool.
+13. Click **Launch Tool** to launch into the Watson Assistant training tool.
 
     ![](assets/1.15.png)
 
-14. We'll use a pretrained workspace. Download the file [workspace.json](../workspace.json) to your computer. Click the up arrow to upload the workspace.
+14. Click **Assistants**. Click **Create new**.
 
     ![](assets/1.16.png)
 
-15. Click **Choose a file** and select the `workspace.json` file you downloaded. Click **Import** to create the new workspace.
+15. Give the assistant a name `Chat With TJ`. Click **Create**.
 
     ![](assets/1.17.png)    
 
-16. The workspace has been trained with Intents, Entities, and a Dialog of responses that provide a simple conversation that the user can have with TJBot. Explore the tabs and see how an example chatbot is designed in the Watson Assistant service.
+16. Click **Add Dialog Skill**.
 
     ![](assets/1.18.png)
 
-    In order for TJBot to use the Watson Assistant service, we first need to get the service credentials and workspace ID. Click the deploy button in the left sidebar.
+17. Click **Import Skill**. We'll use a pretrained skill. Download the file [workspace.json](../workspace.json) to your computer. Click **Choose JSON file** and select this file. Click **Import**.
 
     ![](assets/1.19.png)
-
-17. Click the **Credentials** tab.
- 
-    ![](assets/1.20.png)
     
-18. Copy the username, password and workspace ID values into the fields under the **Watson Assistant** heading in the Node-RED editor.
+18. Click the vertical elipse. Select **View API Details**. 
+
+    ![](assets/1.20.png)
+
+19. Copy the API Key (password) and workspace ID values into the fields under the **Watson Assistant** heading in the Node-RED editor.
 
     ![](assets/1.21.png)
+    
+    ![](assets/1.22.png)    
 
-    ![](assets/1.22.png)
-
-19. Here's an example of what the `response` object looks like.
+20. Here's an example of what the `response` object looks like.
 
     ```
     {
@@ -147,31 +147,31 @@ You will need a microphone and speaker connected to the TJBot for this lab.
 
     ![](assets/1.23.png)
 
-20. Finally, we'll use the Watson Text to Speech service to speak out the response. Add a ![](assets/nodes/speak.png) node as shown below.
+21. Finally, we'll use the Watson Text to Speech service to speak out the response. Add a ![](assets/nodes/speak.png) node as shown below.
 
     The speak node uses the Watson Text to Speech service, which requires service credentials from IBM Cloud. Click the pencil icon to the right of the **Bot** dropdown menu. 
  
     ![](assets/1.24.png)
 
-21. Click the link icon next to the **Text to Speech** heading to launch into the IBM Cloud console and create a Text to Speech service instance.
+22. Click the link icon next to the **Text to Speech** heading to launch into the IBM Cloud console and create a Text to Speech service instance.
 
     ![](assets/1.25.png)
 
-22. Leave the service name as is. Click **Create**.
+23. Leave the service name as is. Click **Create**.
 
     ![](assets/1.26.png)
 
-23. Click **Show Credentials**.
+24. In the **Manage** tab, click **Show Credentials**.
 
-    ![](assets/1.27.png)	    
+    ![](assets/1.27.png)
 
-24. Copy the username and password into the fields back in the Node-RED editor under the **Text to Speech** section.
+25. Copy the API Key into the field back in the Node-RED editor under the **Text to Speech** section.
 
     ![](assets/1.28.png)
 
     ![](assets/1.29.png)
 
-25.	Determine the Speaker Device ID by running the command `aplay -l` on the Raspberry Pi. In the example output shown below, the USB speaker attached is accessible on card `2`, device `0`.
+26.	Determine the Speaker Device ID by running the command `aplay -l` on the Raspberry Pi. In the example output shown below, the USB speaker attached is accessible on card `2`, device `0`.
 
     ![](assets/1.30.png)
 
@@ -179,14 +179,14 @@ You will need a microphone and speaker connected to the TJBot for this lab.
 
     ![](assets/1.31.png)
 
-26. At the top of the configuration window, select **Male** or **Female** from the **Gender** dropdown menu. Select **English (US dialect)** from the **Speak** dropdown menu. Enable the speaker by ticking the checkbox labeled **Speaker**.
+27. At the top of the configuration window, select **Male** or **Female** from the **Gender** dropdown menu. Select **English (US dialect)** from the **Speak** dropdown menu. Enable the speaker by ticking the checkbox labeled **Speaker**.
 
     ![](assets/1.32.png)
 
-27. Connect the nodes together as shown below.
+28. Connect the nodes together as shown below.
 
     ![](assets/nodes/flow.png) 
     
-28. Click the ![](assets/nodes/deploy.png) button in the top-right corner of the Node-RED editor to save and deploy the changes.
+29. Click the ![](assets/nodes/deploy.png) button in the top-right corner of the Node-RED editor to save and deploy the changes.
 
-29. Click the button to the left of the inject node labeled **Start Listening** to activate the microphone. Speak a phrase. TJBot will transcribe the audio with the Watson Speech to Text service, analyze the utterance with the Watson Assistant service, and speak out the response using the Watson Text to Speech service.
+30. Click the button to the left of the inject node labeled **Start Listening** to activate the microphone. Speak a phrase. TJBot will transcribe the audio with the Watson Speech to Text service, analyze the utterance with the Watson Assistant service, and speak out the response using the Watson Text to Speech service.

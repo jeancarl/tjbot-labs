@@ -4,7 +4,7 @@
 
 ## Requirements
 
-In this lab, we'll use the listen and analyze tone nodes to train TJBot to listen to utterances and analyze the emotion, lighting up an LED light based on which emotion is most prevalent. You will need a microphone and LED connected to the TJBot for this lab.
+In this lab, you'll use the listen and analyze tone nodes to train TJBot to listen to utterances and analyze the emotion, lighting up an LED light based on which emotion is most prevalent. You will need a microphone and LED connected to the TJBot for this lab.
 
 ## Train TJBot to Listen and React to Emotions
 
@@ -23,11 +23,11 @@ In this lab, we'll use the listen and analyze tone nodes to train TJBot to liste
 
     ![](assets/1.4.png)
 
-4. Click the link icon next to the **Speech to Text** heading to launch into the IBM Cloud console and create a Watson Speech to Text service instance.
+4. Click the link icon next to the **Speech to Text** heading to launch into the IBM Cloud console. Sign into your IBM Cloud account if prompted. 
 
     ![](assets/1.5.png)
 
-5. If you don't have an IBM Cloud account, sign up for an account. Sign into your account if prompted. Leave the service name as is. Click **Create**.
+5. Leave the service name as is. Click **Create**.
 
     ![](assets/1.6.png)
 
@@ -35,7 +35,7 @@ In this lab, we'll use the listen and analyze tone nodes to train TJBot to liste
 
     ![](assets/1.7.png)
 
-7. Copy the username and password into the fields back in the Node-RED editor under the **Speech to Text** section.
+7. Copy the API Key into the field back in the Node-RED editor under the **Speech to Text** section.
 
     ![](assets/1.8.png)
     ![](assets/1.9.png)    
@@ -62,7 +62,7 @@ In this lab, we'll use the listen and analyze tone nodes to train TJBot to liste
 
     ![](assets/1.14.png)
 
-13. Copy the username and password into the fields back in the Node-RED editor under the **Tone Analyzer** section.
+13. Copy the API Key into the field back in the Node-RED editor under the **Tone Analyzer** section.
 
     ![](assets/1.15.png)
     ![](assets/1.16.png)    

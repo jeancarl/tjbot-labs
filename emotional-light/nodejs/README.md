@@ -4,11 +4,15 @@
 
 ## Requirements
 
-In this lab, we'll use the listen and analyze tone methods to train TJBot to listen to utterances and analyze the emotion, shining an LED light based on which emotion is most prevalent. 
+In this lab, you'll use the listen and analyze tone methods to train TJBot to listen to utterances and analyze the emotion, shining an LED light based on which emotion is most prevalent. 
 
 You can run this lab on a physical TJBot or use the [TJBot simulator](https://ibm.biz/meet-tjbot).
 
 If you run this lab on a physical TJBot, you will need to connect a microphone and LED to the TJBot for this lab. 
+
+## IBM Cloud account
+
+You will need a IBM Cloud account to create the IBM Watson services used in this lab. See [ibm.biz/start-tjbot-lab](https://ibm.biz/start-tjbot-lab) to register for and log into IBM Cloud.
 
 ## Train TJBot to Listen and React to Emotions
 
@@ -29,14 +33,14 @@ If you run this lab on a physical TJBot, you will need to connect a microphone a
     /* Step #9 */
     ```
     
-2. In order for TJBot to listen and transcribe audio, we first need to configure it with a microphone. The first argument to the TJBot constructor is an array of hardware available. Add `"microphone"` to this array.
+2. For TJBot to listen and transcribe audio, we first need to configure it with a microphone. The first argument to the TJBot constructor is an array of hardware available. Add `"microphone"` to this array.
 
     ```
     var tj = new TJBot(
       ["microphone"],
     ```
 
-3. TJBot uses the Watson Speech to Text service from IBM Cloud to transcribe the audio. If you don't have an IBM Cloud account, sign up at [https://bluemix.net](https://bluemix.net). Sign into your account. 
+3. TJBot uses the Watson Speech to Text service from IBM Cloud to transcribe the audio. Sign into your IBM Cloud account. 
 
 4. Click the **Catalog** link in the top menu of the IBM Cloud dashboard. 
 
@@ -54,12 +58,11 @@ If you run this lab on a physical TJBot, you will need to connect a microphone a
 
     ![](assets/1.4.png)
 
-8. Replace the placeholder `/* Step #8 */` with the following code, using the username and password from the previous step. 
+8. Replace the placeholder `/* Step #8 */` with the following code, using the API Key from the previous step. 
 
     ```
         speech_to_text: { 
-          username: "cf63b1f3-ef18-4628-86c8-6b1871e076b9",
-          password: "MWNwz3qcdIab"
+          apikey: "T7XjA4ZpXVb8Zw4YZ9w6c7xpvqgSa5zmnpY-1g0u1Y7f"
         }, 
     ```
     
@@ -91,12 +94,11 @@ If you run this lab on a physical TJBot, you will need to connect a microphone a
 
     ![](assets/1.8.png)	
 
-13. Replace the placeholder `/* Step #13 */` with the following code, using the username and password credentials from the previous step:
+13. Replace the placeholder `/* Step #13 */` with the following code, using the API Key from the previous step:
 
     ```
         tone_analyzer: {
-          username: "6e3454ed-7b74-4e7f-b169-c6603b58ad56",
-          password: "QrmEK64YsyuM"
+          apikey: "RUGiHs3FcfFq_9BV4_mwSNRfQqwgaBV1G2zvRkMhEymR"
         }
     ```
 
@@ -158,12 +160,10 @@ var tj = new TJBot(
   {}, 
   {
     speech_to_text: {
-      username: "",
-      password: ""
+      apikey: ""
     },
     tone_analyzer: {
-      username: "",
-      password: ""
+      apikey: ""
     }
   }
 );

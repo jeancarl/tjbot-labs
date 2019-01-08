@@ -4,7 +4,7 @@
 
 ## Requirements
 
-In this lab, we'll use the listen, converse, and speak methods to train TJBot to listen to utterances, understand the natural language intents and entities, and respond by speaking out the response.
+In this lab, you'll use the listen, converse, and speak methods to train TJBot to listen to utterances, understand the natural language intents and entities, and respond by speaking out loud the response.
 
 You can run this lab on a physical TJBot or use the [TJBot simulator](https://ibm.biz/meet-tjbot).
 
@@ -18,35 +18,34 @@ If you run this lab on a physical TJBot, you will need to connect a microphone a
     var TJBot = require("tjbot");
     
     var tj = new TJBot(
-      [/* Step #2 *//* Step #23 */],
+      [/* Step #2 *//* Step #25 */],
       {
-        /* Step #24 */
+        /* Step #26 */
       },
       {
         /* Step #8 */
-        /* Step #16 */
-        /* Step #22 */
+        /* Step #18 */
+        /* Step #24 */
       }
     );
 
-    /* Step #17 */
+    /* Step #19 */
 
     /* Step #9 */
     ```
 
-2. In order for TJBot to listen and transcribe audio, we first need to configure it with a microphone. The first argument to the TJBot constructor is an array of hardware available. Add `"microphone"` to this array.
+2. For TJBot to listen and transcribe audio, we first need to configure it with a microphone. The first argument to the TJBot constructor is an array of hardware available. Add `"microphone"` to this array.
 
     ```
     var tj = new TJBot(
-      ["microphone"/* Step #23 */],
+      ["microphone"/* Step #25 */],
     ```
 
-3. TJBot uses the Watson Speech to Text service from IBM Cloud to transcribe the audio. If you don't have an IBM Cloud account, sign up at [https://bluemix.net](https://bluemix.net). Sign into your account.
+3. TJBot uses the Watson Speech to Text service from IBM Cloud to transcribe the audio. Sign into your IBM Cloud account.
 
 4. Click the **Catalog** link in the top menu of the IBM Cloud dashboard.
 
     ![](assets/1.1.png)
-
 
 5. Click the **AI** category on the left. Click the **Speech to Text** tile.
 
@@ -56,7 +55,7 @@ If you run this lab on a physical TJBot, you will need to connect a microphone a
 
     ![](assets/1.3.png)
 
-7. Click **Show Credentials**.
+7. In the **Manage** tab, click **Show Credentials**.
 
     ![](assets/1.4.png)       
 
@@ -64,8 +63,7 @@ If you run this lab on a physical TJBot, you will need to connect a microphone a
 
     ```
         speech_to_text: {
-          username: "cf63b1f3-ef18-4628-86c8-6b1871e076b9",
-          password: "MWNwz3qcdIab"
+          apikey: "T7XjA4ZpXVb8Zw4YZ9w6c7xpvqgSa5zmnpY-1g0u1Y7f"
         },
     ```
 
@@ -78,7 +76,7 @@ If you run this lab on a physical TJBot, you will need to connect a microphone a
       console.log(text);
       tj.stopListening();      
 
-      /* Step #18 */
+      /* Step #20 */
     }
 
     tj.listen(processText);    
@@ -94,59 +92,57 @@ If you run this lab on a physical TJBot, you will need to connect a microphone a
 
     ![](assets/1.7.png)
 
-12. Click the button labeled **Launch Tool** to launch into the Watson Assistant training tool.
+12. Click **Launch Tool** to launch into the Watson Assistant training tool.
 
     ![](assets/1.8.png)
 
-13. We'll use a pretrained workspace. Download the file [workspace.json](../workspace.json) to your computer. Click the up arrow.
+13. Click **Assistants**. Click **Create new**.
 
     ![](assets/1.9.png)
 
-14. Click **Choose a file** and select the `workspace.json` file you downloaded. Click **Import** to create the new workspace.
+14. Give the assistant a name `Chat With TJ`. Click **Create**.
 
     ![](assets/1.10.png)    
 
-15. The workspace has been trained with Intents, Entities, and a Dialog of responses that provide a simple conversation that the user can ask TJBot. Explore the tabs and see how an example chatbot is designed in the Watson Assistant service.
+15. Click **Add Dialog Skill**.
 
-    ![](assets/1.11.png)    
+    ![](assets/1.11.png)
 
-    In order for TJBot to use the Watson Assistant service, we first need to get the service credentials and workspace ID. Click the deploy button in the left sidebar.
+16. Click **Import Skill**. We'll use a pretrained skill. Download the file [workspace.json](../workspace.json) to your computer. Click **Choose JSON file** and select this file. Click **Import**.
 
-    ![](assets/1.12.png)    
-
-16. Click the **Credentials** tab. 
+    ![](assets/1.12.png)
+    
+17. Click the vertical elipse. Select **View API Details**. 
 
     ![](assets/1.13.png)
-    
-    Copy the username and password values. 
-    
-    ![](assets/1.14.png)
 
-    Replace the placeholder `/* Step #16 */` with the following code, using the **Username** and **Password** credentials from the previous step:
+18. Copy the API Key (password) and workspace ID values into the fields under the **Watson Assistant** heading in the Node-RED editor.
+
+    ![](assets/1.14.png)
+    
+
+    Replace the placeholder `/* Step #18 */` with the following code, using the **API Key** from the previous step:
 
 
     ```
         assistant: {
-          username: "0b1a23a4-e56d-7890-bf1d-23e45b6789bf",
-          password: "ABCDEfGHiJkL"
+          apikey: "DV9sJ-1GZ_sW8oGEOEd0tZT46peLo9QZc_dE9VbHgCOI"
         },
     ```
 
-17. Replace the placeholder `/* Step #17 */` with the following code, using the Workspace ID credential:
+19. Replace the placeholder `/* Step #19 */` with the following code, using the Workspace ID credential:
 
     ```
-    var workspaceId = "12ea34ee-5bf6-7890-1b2a-34506a596ff";
+    var workspaceId = "c9641780-a360-4e1a-a74c-c9ee3d697f7e";
     ```
 
-    ![](assets/1.15.png)
-
-18. Replace the placeholder `/* Step #18 */` with the following code:
+20. Replace the placeholder `/* Step #20 */` with the following code:
 
     ```  
       tj.converse(workspaceId, text, response => {
         console.log(response);
 
-        /* Step #25 */
+        /* Step #27 */
       });
     ```
     
@@ -198,37 +194,36 @@ If you run this lab on a physical TJBot, you will need to connect a microphone a
     }
     ```    
 
-19. Return to the IBM Cloud dashboard catalog and create a **Text to Speech** service, which you will use to speak out the response.
+21. Return to the IBM Cloud dashboard catalog and create a **Text to Speech** service, which you will use to speak out the response.
 
     ![](assets/1.16.png)    
 
-20. Leave the service name as is. Click **Create**.
+22. Leave the service name as is. Click **Create**.
 
     ![](assets/1.17.png)
 
-21. Click **Show Credentials**.
+23. In the **Manage** tab, click **Show Credentials**.
 
     ![](assets/1.18.png)    
 
-22. Replace the placeholder `/* Step #22 */` with the following code, using the username and password credentials from the previous step:
+24. Replace the placeholder `/* Step #24 */` with the following code, using the username and password credentials from the previous step:
 
     ```
         text_to_speech: {
-          username: "dec28251-d359-4f88-a714-9f36694c4218",
-          password: "5ZwSwrciqoHG"
+          apikey: "q5wt6VlBi5IuljwK-vbI8sCwkQrHCaAYNXeftnwCJilc"
         }
     ```
 
     ![](assets/1.19.png)
 
-23. To configure TJBot with a speaker to play audio, add `"speaker"` to the array of the first argument to the TJBot constructor. If you're using a physical TJBot, refer to the "[Running on the Raspberry Pi](link)" section for more information about the speaker device ID.
+25. To configure TJBot with a speaker to play audio, add `"speaker"` to the array of the first argument to the TJBot constructor. If you're using a physical TJBot, refer to the "[Running on the Raspberry Pi](link)" section for more information about the speaker device ID.
 
     ```
     var tj = new TJBot(
       ["microphone","speaker"],
     ```
 
-24. Replace the placeholder `/* Step #24 */` with the following code to configure TJBot with the gender of the voice (`male` or `female`) and what language to use (`en-US` is for the US English dialect).
+26. Replace the placeholder `/* Step #26 */` with the following code to configure TJBot with the gender of the voice (`male` or `female`) and what language to use (`en-US` is for the US English dialect).
 
     ```
         robot: {
@@ -239,7 +234,7 @@ If you run this lab on a physical TJBot, you will need to connect a microphone a
         }
     ```
 
-25. Replace the placeholder `/* Step #25 */` with the following code, which combines the response from the Watson Assistant service and uses the Watson Text to Speech service to speak out the response:
+27. Replace the placeholder `/* Step #27 */` with the following code, which combines the response from the Watson Assistant service and uses the Watson Text to Speech service to speak out the response:
 
     ```
         tj.speak(response.object.output.text.join(" ")).then(() => {
@@ -249,7 +244,7 @@ If you run this lab on a physical TJBot, you will need to connect a microphone a
     
     When the text has been spoken out, TJBot will resume listening for another utterance, and repeat the cycle.
 
-26. Run the code. Speak a phrase. TJBot will transcribe the audio with the Watson Speech to Text service, analyze the utterance with the Watson Assistant service, and speak out the response using the Watson Text to Speech service.    
+28. Run the code. Speak a phrase. TJBot will transcribe the audio with the Watson Speech to Text service, analyze the utterance with the Watson Assistant service, and speak out the response using the Watson Text to Speech service.    
 
 ## Running on the Raspberry Pi
 
@@ -285,16 +280,13 @@ var tj = new TJBot(
   },
   {
     speech_to_text: {
-      username: "",
-      password: ""
+      apikey: ""
     },
     assistant: {
-      username: "",
-      password: ""
+      apikey: ""
     },
     text_to_speech: {
-      username: "",
-      password: ""
+      apikey: ""
     }    
   }
 );

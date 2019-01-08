@@ -4,7 +4,7 @@
 
 ## Requirements
 
-In this lab, we'll use the see and speak nodes to train TJBot to recognize objects and speak what is seen. You will need a Raspberry Pi camera and speaker connected to the TJBot for this lab. 
+In this lab, you'll use the see and speak nodes to train TJBot to recognize objects and speak out loud what is seen. You will need a Raspberry Pi camera and speaker connected to the TJBot for this lab. 
 
 ## Train TJBot to See Objects and Speak
 
@@ -18,10 +18,10 @@ In this lab, we'll use the see and speak nodes to train TJBot to recognize objec
     
     The see node uses the Watson Visual Recognition service, which requires service credentials from IBM Cloud. Click the pencil icon to the right of the **Bot** dropdown menu. 
 
-3. Click the link icon next to the **Visual Recognition** heading to launch into the IBM Cloud console and create a Watson Visual Recognition service instance.
+3. Click the link icon next to the **Visual Recognition** heading to launch into the IBM Cloud console. Sign into your IBM Cloud account if prompted. 
 
     ![](assets/1.3.png)
-4. If you don't have an IBM Cloud account, sign up for an account. Sign into your account if prompted. Leave the service name as is. Click **Create**.
+4. Leave the service name as is. Click **Create**.
 
     ![](assets/1.4.png)
 
@@ -29,12 +29,10 @@ In this lab, we'll use the see and speak nodes to train TJBot to recognize objec
 
     ![](assets/1.5.png)	
 
-6. Copy the IAM API key into the field back in the Node-RED editor under the **Visual Recognition** section. 
+6. Copy the API key into the field back in the Node-RED editor under the **Visual Recognition** section. 
 
     ![](assets/1.6.png)
-    ![](assets/1.7.png)
-    
-    **Note**: Visual Recognition service instances created before May 23, 2018 use a different authentication mechanism. Copy the API key into the API Key field instead.     
+    ![](assets/1.7.png)    
 	
 7. Enable the camera by ticking the checkbox labeled **Camera**. 
 
@@ -60,7 +58,7 @@ In this lab, we'll use the see and speak nodes to train TJBot to recognize objec
 
     ![](assets/1.13.png)	
 
-13.	Copy the username and password into the fields back in the Node-RED editor under the **Text to Speech** section.
+13.	Copy the API key into the field back in the Node-RED editor under the **Text to Speech** section.
 
     ![](assets/1.14.png)    
 

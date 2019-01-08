@@ -4,7 +4,7 @@
 
 ## Requirements
 
-In this lab, we will use the see and speak capabilities to train TJBot to recognize objects and speak what is seen. You can run this lab on a physical TJBot or use the [TJBot simulator](https://ibm.biz/meet-tjbot).
+In this lab, you'll use the see and speak capabilities to train TJBot to recognize objects and speak out loud what is seen. You can run this lab on a physical TJBot or use the [TJBot simulator](https://ibm.biz/meet-tjbot).
 
 If you run this lab on a physical TJBot, you will need to connect a Raspberry Pi camera and speaker to the TJBot for this lab. There is also an extra step to configure the speaker in the section titled **Running on the Raspberry Pi** at the end of this lab.
 
@@ -28,16 +28,16 @@ If you run this lab on a physical TJBot, you will need to connect a Raspberry Pi
     /* Step #9 */
     ```
     
-2. In order for TJBot to take a picture, we first need to configure it with a camera. The first argument to the TJBot constructor is an array of hardware available. Add `"camera"` to this array.
+2. For TJBot to take a picture, we first need to configure it with a camera. The first argument to the TJBot constructor is an array of hardware available. Add `"camera"` to this array.
 
     ```
     var tj = new TJBot(
       ["camera"],
     ```
 
-3. TJBot uses the Watson Visual Recognition service from IBM Cloud to classify objects and colors in the picture. If you don't have an IBM Cloud account, sign up at [https://bluemix.net](https://bluemix.net). Sign into your account. 
+3. TJBot uses the Watson Visual Recognition service from IBM Cloud to classify objects and colors in the picture. 
 
-4. Click the **Catalog** link in the top menu of the IBM Cloud dashboard.  
+4. Click the **Catalog** link in the top menu of the IBM Cloud dashboard. Sign into your IBM Cloud account. 
 
     ![](assets/1.1.png)
     
@@ -54,11 +54,11 @@ If you run this lab on a physical TJBot, you will need to connect a Raspberry Pi
 
     ![](assets/1.4.png)	    
 
-8. Replace the placeholder `/* Step #8 */` with the following code, using the API key from the previous step. 
+8. Replace the placeholder `/* Step #8 */` with the following code. Use your own API key from the previous step. 
 
     ```
       visual_recognition: {
-        iam_apikey: "g0h123kjf5h3m620n5h1175mrk54h32vc54ji543-lFL"
+        apikey: "U_LmcgJFHIFFlUx1v6Jym-8JVgOXdC0P2hWck4WfVt8U-lFL"
       },   
     ```
     
@@ -115,12 +115,12 @@ This will instruct TJBot to take a photo and return an array of objects and colo
 
     ![](assets/1.8.png)	
 
-14. Replace the placeholder `/* Step #14 */` with the following code, using the username and password credentials from the previous step. 
+14. Replace the placeholder `/* Step #14 */` with the following code. Use your own API key from the previous step. 
+ 
 
     ```
     text_to_speech: {
-      username: "dec28251-d359-4f88-a714-9f36694c4218",
-      password: "5ZwSwrciqoHG"
+      apikey: "q5wt6VlBi5IuljwK-vbI8sCwkQrHCaAYNXeftnwCJilc"
     }
     ```
 
@@ -182,7 +182,7 @@ var tj = new TJBot(
   ["camera","speaker"], 
   {
     robot: {
-      gender: "male" 
+      gender: "male"
     },
     speak: {
       language: "en-US"
@@ -190,11 +190,10 @@ var tj = new TJBot(
   }, 
   {
     visual_recognition: {
-      iam_apikey: ""
+      apikey: ""
     },
     text_to_speech: {
-      username: "",
-      password: ""
+      apikey: ""
     }
   });
     
