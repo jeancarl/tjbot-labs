@@ -167,7 +167,7 @@ You will need a microphone and speaker connected to the TJBot for this lab.
 	}
     ```    
 
-    Add a ![](assets/nodes/change.png) node to move the response into the `msg.payload` property. Set `msg.payload` to the function `$join(msg.payload.object.output.text, " ")`.
+    Add a ![](assets/nodes/change.png) node to move the response into the `msg.payload` property. Set `msg.payload` to the function `$join(msg.response.payload.object.output.text, " ")`.
 
     ![](assets/1.23.png)
 
